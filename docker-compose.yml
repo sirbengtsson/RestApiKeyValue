@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    environment:
+      PORT: "8081"
+      IS_PERSISTENT: "true"
+      REDIS_DB: "0"
+      REDIS_HOST: "redis:6379"
+      REDIS_PASSWORD: ""
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
